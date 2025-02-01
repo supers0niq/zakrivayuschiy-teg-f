@@ -1,32 +1,31 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-family: var(--main-font);
-  background-color: var(--background-color);
-  color: var(--accent-color);
-
+  font-family: var(--main-font, Arial, sans-serif);
+  background-color: var(--background-color, #ffffff);
+  color: var(--accent-color, #000000);
   background-image: var(--backgrount-imige);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
+  font-variation-settings: "wght" var(--font-weight-regular, 400);
 }
 
 .header {
-  background-color: var(--background-color);
+  background-color: var(--background-color, #ffffff);
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: clamp(20.438rem, 19.5359rem + 3.849vw, 23rem);
   justify-content: flex-end;
   gap: 24px;
   margin: 100px auto;
   padding: 25px 0;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font, Arial, sans-serif);
 }
 
-.container-width {
+.content-container {
   width: clamp(23.438rem, 16.2859rem + 30.5157vw, 43.75rem);
-  border: 2px solid var(--accent-color);
+  border: 2px solid var(--accent-color, #000000);
 }
 
 .header__wrapper {
@@ -63,7 +62,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: var(--accent-color);
+  background-color: var(--accent-color, #000000);
   transform-origin: bottom left;
   transform: scaleX(0);
   transition: transform 0.3s ease;
@@ -73,7 +72,7 @@
   transform: scaleX(1);
 }
 
-.theme-menu__button:focus {
+.theme-menu__button:focus-visible {
   outline: none;
   opacity: 0.6;
 }
@@ -88,10 +87,11 @@
   content: "▶";
   position: absolute;
   left: -20px;
-  animation: choice 0.5s ease-in-out infinite alternate;
+  animation: shakeHorizontal 0.5s ease-in-out infinite alternate;
 }
 
 .header__tag {
+  text-transform: uppercase;
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
 }
 
@@ -108,27 +108,28 @@
 }
 
 .card {
-  background-color: var(--background-color);
+  background-color: var(--background-color, #ffffff);
 }
 
 .card__title {
   font-size: 18px;
   margin: 5px 10px;
-  font-variation-settings: "wght" var(--font-weight-bold);
+  font-variation-settings: "wght" var(--font-weight-bold, 700);
 }
 
 .card__image-wrapper {
   overflow: hidden;
   max-height: 696px;
   position: relative;
-  border-top: 2px solid var(--accent-color);
-  border-bottom: 2px solid var(--accent-color);
+  border-top: 2px solid var(--accent-color, #000000);
+  border-bottom: 2px solid var(--accent-color, #000000);
 }
 
 .card__image {
   max-width: 100%;
   border: none;
   margin-bottom: -5px;
+  object-fit: cover;
 }
 
 .card__description-wrapper {
@@ -141,7 +142,7 @@
 
 .card__description {
   font-size: 18px;
-  font-variation-settings: "wght" var(--font-weight-regular);
+  font-variation-settings: "wght" var(--font-weight-regular, 400);
   line-height: 21px;
 }
 
@@ -152,6 +153,7 @@
 }
 
 .card__icon-button {
+  outline: 2px solid transparent;
   background-color: transparent;
   border: none;
   outline: none;
@@ -164,7 +166,7 @@
 }
 
 .card__icon-button:focus-visible {
-  outline: 2px solid var(--accent-color);
+  outline: 2px solid var(--accent-color, #000000);
 }
 
 .button {
@@ -174,13 +176,12 @@
   gap: 12px;
   position: relative;
   transition: box-shadow 0.3s ease;
-  border: 2px solid var(--accent-color);
+  border: 2px solid var(--accent-color, #000000);
   padding: 9px 36px;
 }
 
 .card__like-button {
   justify-content: center;
-  max-width: 130px;
 }
 
 .button:focus {
@@ -189,15 +190,15 @@
 
 .button__text {
   position: relative;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font, Arial, sans-serif);
   font-size: 14px;
-  color: var(--mix-color);
+  color: var(--mix-color, #ffff);
   mix-blend-mode: difference;
   z-index: 1;
 }
 
 .blend-mode-svg {
-  color: var(--mix-color);
+  color: var(--mix-color, #ffff);
   mix-blend-mode: difference;
   z-index: 1;
 }
@@ -208,7 +209,7 @@
 }
 
 .button:focus-visible {
-  box-shadow: 2px 2px 0 var(--accent-color);
+  box-shadow: 2px 2px 0 var(--accent-color, #000000);
 }
 .button::after {
   content: "";
@@ -217,7 +218,7 @@
   left: 0;
   width: 100%;
   height: 101%;
-  background-color: var(--accent-color);
+  background-color: var(--accent-color, #000000);
   transform-origin: bottom left;
   transform: scaleX(0);
   transition: transform 0.5s ease-in-out;
@@ -233,22 +234,23 @@
   position: absolute;
   top: 25px;
   right: 25px;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font, Arial, sans-serif);
   font-size: 14px;
-  color: var(--accent-font);
+  color: var(--accent-font, Arial, sans-serif);
   opacity: 0.5;
   mix-blend-mode: hard-light;
-  text-shadow: 0 0 0 var(--stroke-color), 1px 1px 0 var(--stroke-color),
-    -1px 1px 0 var(--stroke-color), 0 -1px 0 var(--stroke-color);
+  text-shadow: 0 0 0 var(--stroke-color, #ffff),
+    1px 1px 0 var(--stroke-color, #ffff), -1px 1px 0 var(--stroke-color, #ffff),
+    0 -1px 0 var(--stroke-color, #ffff);
 }
 
 @supports (
-  (text-stroke: 1px var(--stroke-color)) or
-    (-webkit-text-stroke: 1px var(--stroke-color))
+  (text-stroke: 1px var(--stroke-color, #ffff)) or
+    (-webkit-text-stroke: 1px var(--stroke-color, #ffff))
 ) {
   .image-decoration {
-    -webkit-text-stroke: 1px var(--stroke-color);
-    text-stroke: 1px var(--stroke-color);
+    -webkit-text-stroke: 1px var(--stroke-color, #ffff);
+    text-stroke: 1px var(--stroke-color, #ffff);
     text-shadow: none;
   }
 }
@@ -258,7 +260,7 @@
   margin: 50px auto;
   padding: 15px 20px;
   align-items: center;
-  background-color: var(--background-color);
+  background-color: var(--background-color, #ffffff);
 }
 
 .sparks {
@@ -266,14 +268,14 @@
 }
 
 .dialog {
-  background-color: var(--background-color);
-  border: 2px solid var(--accent-color);
+  background-color: var(--background-color, #ffffff);
+  border: 2px solid var(--accent-color, #000000);
   width: clamp(21.313rem, 20.9609rem + 1.5023vw, 22.313rem);
   padding: 30px;
 }
 
 .approve-btn {
-  color: var(--accent-color);
+  color: var(--accent-color, #000000);
 }
 
 .dialog::backdrop {
