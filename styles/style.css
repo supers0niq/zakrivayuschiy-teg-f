@@ -17,8 +17,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  height: clamp(20.438rem, 19.5359rem + 3.849vw, 23rem);
   gap: 24px;
-  margin: 128px auto;
+  margin: 100px auto;
   padding: 25px 0;
   font-family: var(--accent-font, Arial, sans-serif);
 }
@@ -65,23 +66,26 @@
   position: absolute;
   bottom: -2px;
   left: 0;
-  width: 0;
+  width: 100%;
   height: 2px;
   background-color: var(--accent-color, #000000);
-  transition: width 0.3s ease;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
 }
 
-.theme-menu__button:focus .btn-text-line::after,
-.theme-menu__button:hover .btn-text-line::after {
-  width: 100%;
-}
-
-.theme-menu__button:focus-visible::after {
+.theme-menu__button:hover .btn-text-line::after,
+.theme-menu__button:focus-visible .btn-text-line::after {
   transform: scaleX(1);
 }
 
-.theme-menu__button:focus-visible {
+.theme-menu__button:focus,
+.theme-menu__button:focus:not(:focus-visible) {
   outline: none;
+  opacity: 0;
+}
+
+.theme-menu__button:focus-visible {
   opacity: 0.6;
 }
 
@@ -97,7 +101,6 @@
   left: -20px;
   animation: shakeHorizontal 0.5s ease-in-out infinite alternate;
 }
-
 .header__tag {
   text-transform: uppercase;
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
@@ -156,8 +159,10 @@
 
 .card-controls {
   display: flex;
-  margin-left: auto;
-  align-items: stretch;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  gap: 7px;
 }
 
 .card__icon-button {
@@ -168,11 +173,12 @@
   transition: outline 0.3s ease;
 }
 
-.like-icon {
-  box-sizing: content-box;
-}
 .like-icon .heart {
-  transform-origin: center; /* Центрирование анимации */
+  block-size: 39px;
+  inline-size: 36px;
+  box-sizing: border-box;
+  height: min-content;
+  transform-origin: center;
 }
 
 .card__icon-button:focus-visible {
@@ -192,7 +198,7 @@
 
 .card__like-button {
   justify-content: center;
-  max-width: 118px;
+  max-width: 128px;
 }
 
 .button:focus {
@@ -268,7 +274,7 @@
 
 .save-btn {
   gap: 8px;
-  margin: 50px auto;
+  margin: 50px auto 103px auto;
   padding: 15px 20px;
   align-items: center;
   background-color: var(--background-color, #ffffff);
@@ -298,7 +304,7 @@
 
 .dialog__button {
   text-transform: uppercase;
-  width: auto;
+  width: 100%;
   margin: 0 auto;
   justify-content: center;
 }

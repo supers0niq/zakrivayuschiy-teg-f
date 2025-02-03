@@ -1,6 +1,6 @@
 @media (hover: hover) {
   .like-icon:hover .main-body {
-    fill: var(--accent-colorб #000000);
+    fill: var(--accent-color, #000000);
     transition: fill 0.3s linear 0.05s;
   }
 
@@ -10,28 +10,26 @@
   }
 
   .theme-menu__button:hover {
-    opacity: 0.6;
+    transition: fill 0.5s ease-in-out;
   }
 }
 
 @keyframes shakeHorizontal {
-  from {
-    translate: 0 0;
-  }
   to {
-    translate: 4px 0;
+    transform: translate(4px);
   }
 }
 
 @keyframes sparks {
-  from {
-    opacity: 0;
-  }
   to {
     opacity: 1;
   }
 }
-
+@keyframes likePulse {
+  to {
+    transform: scale(1.25);
+  }
+}
 .like-icon.is-liked .sparks {
   animation: sparks 0.3s ease-in 0.3s alternate;
 }
@@ -57,12 +55,12 @@
 }
 
 .like-icon.is-liked .core {
-  transition: fill 0.3s linear;
+  transition: fill 0.3s linear 0.03s;
   fill: var(--color-fill, #ff0000);
 }
 
 .like-icon.is-liked .main-body {
-  transition: fill 0.3s linear;
+  transition: fill 0.3s linear 0.03s;
   fill: var(--color-fill, #ff0000);
 }
 
@@ -75,12 +73,6 @@
   transition: fill 0.3s linear 0.06s;
 }
 
-@keyframes likePulse {
-  to {
-    transform: scale(1.5);
-  }
-}
-
 .like-icon.is-liked .heart {
-  animation: likePulse 0.3s ease-in 0.1s alternate;
+  animation: likePulse 0.3s ease-in 0.3s alternate;
 }
